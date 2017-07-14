@@ -8,7 +8,6 @@ Terminal = {
   initialize: function () {
     terminalElement = document.getElementById(Terminal.termId);
     terminalElement.value = Terminal.name;
-    //terminalElement.value = "enter help to get started\n" + Terminal.name;
   },
   Input: {
     enterCode: 13,
