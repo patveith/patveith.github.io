@@ -8,30 +8,48 @@ Terminal = {
   initialize: function () {
     terminalElement = document.getElementById(Terminal.termId);
     terminalElement.value = Terminal.name;
+    //Sends backspace to readInput function
+    $("textarea").on('keydown', function (e) {
+      if (e.keyCode == 8) {
+        Terminal.Input.readInput(e);
+      }
+    });
   },
   Input: {
     enterCode: 13,
-    readInput: function(event){
-      //TODO needs to prevent backspace from deleting prompt
-      //TODO terminal history
-      if (event.keyCode === Terminal.Input.enterCode) {
-        terminalElement = document.getElementById(Terminal.termId);
-        inputCmd = terminalElement.value;
-        Terminal.Input.interpretInput(inputCmd);
-        Terminal.cmdCount++;
-        terminalElement.value = terminalElement.value + Terminal.newLine;
-        //Prevents line break from occuring
-        if(event.preventDefault){
-          event.preventDefault();
-        }
-        //Scrolls down as commands are entered
-        terminalElement.scrollTop = terminalElement.scrollHeight;
+    backspaceCode: 8,
+    getTextArea: function(){
+      return document.getElementById(Terminal.termId);
+    },
+    checkIfPrompt: function(event){
+      var arr = Terminal.Input.getTextArea().value.split(Terminal.name);
+      if(arr[arr.length-1] == ""){
+        event.preventDefault();
       }
     },
-    interpretInput: function(line){
-      var cmd = line.split(Terminal.newLine)[Terminal.cmdCount];
+    readInput: function(event){
+      //TODO terminal history
+      if (event.keyCode == Terminal.Input.enterCode) {
+        var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
+        if(cmd == Terminal.Commands.clear){
+          terminalElement.value = terminalElement.value + Terminal.name;
+        }else{
+          terminalElement.value = terminalElement.value + Terminal.newLine;
+          Terminal.cmdCount++;
+        }
+        //Prevents line break from occuring
+        event.preventDefault();
+        //Scrolls down as commands are entered
+        terminalElement.scrollTop = terminalElement.scrollHeight;
+      }else if(event.keyCode == Terminal.Input.backspaceCode){
+        Terminal.Input.checkIfPrompt(event);
+      }
+    },
+    interpretInput: function(text){
+      var arr = text.split(Terminal.newLine);
+      var cmd = arr[Terminal.cmdCount];
       if(Terminal.cmdCount == 0){
-        cmd = line.split(Terminal.newLine)[Terminal.cmdCount].split(" ")[1]
+        cmd = arr[Terminal.cmdCount].split(" ")[1]
       }
       switch (cmd) {
         case Terminal.Commands.help:
@@ -55,8 +73,9 @@ Terminal = {
           Terminal.Commands.clearCommand();
           break;
         default:
-          //alert("TEST" + cmd + "TEST");
+          Terminal.Commands.notRecognizedCommand(cmd);
       }
+      return cmd;
     }
   },
   Commands: {
@@ -75,13 +94,20 @@ Terminal = {
     },
     listCommand: function(){
       //TODO make words have highlighting, green for files, blue for directories
-      terminalElement = document.getElementById(Terminal.termId);
+      var terminalElement = Terminal.Input.getTextArea();
       terminalElement.value = terminalElement.value + "\n" + Terminal.Commands.list.join("");
     },
     clearCommand: function(){
-      terminalElement = document.getElementById(Terminal.termId);
+      var terminalElement = Terminal.Input.getTextArea();
       terminalElement.value = "";
       Terminal.cmdCount = 0;
+    },
+    notRecognizedCommand: function(cmd){
+      if(cmd == ""){
+        return;
+      }
+      var terminalElement = Terminal.Input.getTextArea();
+      terminalElement.value = terminalElement.value +  "\nbash: " + cmd + ": command not found";
     },
     educationScript: function(){
       //TODO make disappear when another thing appears
