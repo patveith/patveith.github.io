@@ -25,11 +25,9 @@ HistoryList.prototype = {
       this.tail.next = node;
       node.prev = this.tail;
       this.tail = node;
-      this.curr = node;
     }else{
       this.head = node;
       this.tail = node;
-      this.curr = node;
     }
 
     this.length++;
@@ -47,20 +45,29 @@ HistoryList.prototype = {
     }
 
     while(count < position){
-      currNode = currNode.next;
       count++;
     }
 
-    return currNode;
   },
   getPrev: function(){
-    this.curr = this.curr.prev;
+    if(this.curr == null){
+      this.curr = this.tail;
+      return this.curr.value;
+    }else if(this.curr.prev == null){
+      return this.curr.value;
+    }else {
+      this.curr = this.curr.prev;
+      return this.curr.value;
+    }
   },
   getNext: function(){
-    if(this.curr.next == null){
+    if(this.curr == null){
+      return;
+    }else if(this.curr.next == null){
       return this.curr.value;
     }else {
       this.curr = this.curr.next;
+      return this.curr.value;
     }
   }
 };
@@ -104,8 +111,8 @@ Terminal = {
       }
     },
     getPreviousInputUp: function(){
-      $("h1").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
-      Terminal.Input.historyPosition--;
+      $("h1").text(Terminal.histList.getPrev());
+      //Terminal.Input.historyPosition--;
       //Bottom of list
       if(Terminal.Input.historyPosition == Terminal.histList.length){
 
@@ -118,8 +125,8 @@ Terminal = {
       }
     },
     getPreviousInputDown: function(){
-      $("h1").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
-      Terminal.Input.historyPosition++;
+      $("h1").text(Terminal.histList.getNext());
+      //Terminal.Input.historyPosition++;
       //Bottom of list
       if(Terminal.Input.historyPosition == Terminal.histList.length){
 
