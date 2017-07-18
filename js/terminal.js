@@ -35,7 +35,9 @@ HistoryList.prototype = {
     return node;
   },
   getPrev: function(){
-    if(this.curr == null){
+    if(this.head == null){
+      return null;
+    }else if(this.curr == null){
       this.curr = this.tail;
       return this.curr.value;
     }else if(this.curr.prev == null){
@@ -44,10 +46,11 @@ HistoryList.prototype = {
       this.curr = this.curr.prev;
       return this.curr.value;
     }
+    return;
   },
   getNext: function(){
     if(this.curr == null){
-      return;
+      return null;
     }else if(this.curr.next == null){
       return this.curr.value;
     }else {
@@ -95,24 +98,37 @@ Terminal = {
     },
     getPreviousInputUp: function(){
       var prev = Terminal.histList.getPrev();
-      $("h1").text(prev);
+      //Checks if history list is null
+      if(prev == null){
+        return;
+      }
+      //Appends the previous history command to the terminal
       terminalElement = Terminal.Input.getTextArea();
-      var arr = Terminal.Input.getTextArea().value.split(Terminal.newLine);
+      var arr = terminalElement.value.split(Terminal.newLine);
       arr[Terminal.cmdCount] = prev;
-      terminalElement.value = arr.join("\npatrick@veith:~$ ");
-      //terminalElement.value = terminalElement.value +  Terminal.histList.getPrev();
+      if(arr.length == 1){
+        terminalElement.value = "patrick@veith:~$ " + arr;
+      }else{
+        terminalElement.value = arr.join("\npatrick@veith:~$ ");
+      }
     },
     getPreviousInputDown: function(){
       var next = Terminal.histList.getNext();
-      $("h1").text(next);
+      //Checks if history list is null
+      if(next == null){
+        return;
+      }
+      //Appends the next history command to the terminal
       terminalElement = Terminal.Input.getTextArea();
-      var arr = Terminal.Input.getTextArea().value.split(Terminal.newLine);
+      var arr = terminalElement.value.split(Terminal.newLine);
       arr[Terminal.cmdCount] = next;
-      terminalElement.value = arr.join("\npatrick@veith:~$ ");
-      //terminalElement.value = terminalElement.value +  Terminal.histList.getPrev();
+      if(arr.length == 1){
+        terminalElement.value = "patrick@veith:~$ " + arr;
+      }else{
+        terminalElement.value = arr.join("\npatrick@veith:~$ ");
+      }
     },
     readInput: function(event){
-      //TODO terminal history
       if (event.keyCode == Terminal.Input.enterCode) {
         //Determines command and returns after executing
         var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
