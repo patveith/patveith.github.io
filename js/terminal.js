@@ -34,21 +34,6 @@ HistoryList.prototype = {
 
     return node;
   },
-  searchNodeAt: function(position){
-    var currNode = this.head,
-    length = this.length,
-    count = 1,
-    message = {failure: "Failure"};
-
-    if(length === 0 || position < 1 || position > length){
-      throw new Error(message.failure);
-    }
-
-    while(count < position){
-      count++;
-    }
-
-  },
   getPrev: function(){
     if(this.curr == null){
       this.curr = this.tail;
@@ -99,8 +84,6 @@ Terminal = {
     downArrow: 40,
     upArrow: 38,
     leftArrow: 37,
-    //TODO Get rid of historyPosition using getPrev and getNext
-    historyPosition: 0,
     getTextArea: function(){
       return document.getElementById(Terminal.termId);
     },
@@ -112,31 +95,11 @@ Terminal = {
     },
     getPreviousInputUp: function(){
       $("h1").text(Terminal.histList.getPrev());
-      //Terminal.Input.historyPosition--;
-      //Bottom of list
-      if(Terminal.Input.historyPosition == Terminal.histList.length){
-
-      //Top of list
-      }else if(Terminal.Input.historyPosition == 1){
-
-      //Middle of list
-      }else{
-
-      }
+      var terminalElement = Terminal.Input.getTextArea();
+      terminalElement.value = terminalElement.value +  "\nbash: " + cmd + ": command not found";
     },
     getPreviousInputDown: function(){
       $("h1").text(Terminal.histList.getNext());
-      //Terminal.Input.historyPosition++;
-      //Bottom of list
-      if(Terminal.Input.historyPosition == Terminal.histList.length){
-
-      //Top of list
-      }else if(Terminal.Input.historyPosition == 1){
-
-      //Middle of list
-      }else{
-
-      }
     },
     readInput: function(event){
       //TODO terminal history
@@ -145,7 +108,6 @@ Terminal = {
         var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
         //Adds command to history and resets counter to end of the list
         Terminal.histList.add(cmd);
-        Terminal.Input.historyPosition = Terminal.histList.length;
         //Adds prompt to terminal
         if(cmd == Terminal.Commands.clear){
           terminalElement.value = terminalElement.value + Terminal.name;
