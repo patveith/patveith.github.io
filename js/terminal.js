@@ -132,8 +132,9 @@ Terminal = {
       if (event.keyCode == Terminal.Input.enterCode) {
         //Determines command and returns after executing
         var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
-        //Adds command to history and resets counter to end of the list
+        //Adds command to history and clears curr node
         Terminal.histList.add(cmd);
+        Terminal.histList.curr = null;
         //Adds prompt to terminal
         if(cmd == Terminal.Commands.clear){
           terminalElement.value = terminalElement.value + Terminal.name;
