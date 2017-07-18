@@ -1,10 +1,59 @@
 var Terminal = {};
 
+function Node (value) {
+  this.value = value;
+  this.next = null;
+  this.prev = null;
+};
+
+function HistoryList(){
+  this.length = 0;
+  this.head = null;
+  this.tail = null;
+};
+
+HistoryList.prototype.add = function(value) {
+  var node = Node(value);
+
+  //If not the first node, append new node, add previous to new node, change tail node
+  if(this.length > 0){
+    this.tail.next = node;
+    node.prev = this.tail;
+    this.tail = node;
+  //If the first node set beginning and end of list to the new node
+  }else{
+    this.head = node;
+    this.tail = node;
+  }
+
+  this.length++;
+  return node;
+};
+
+HistoryList.prototype.searchNodeAt = function(position) {
+  var currNode = this.head,
+  length = this.length,
+  count = 1,
+  message = {failure: "Error: Node not in list"};
+
+  if(length === 0 || position < 1 || position > length){
+    throw new Error(message.failure);
+  }
+
+  while(count < position){
+    currNode = currNode.next;
+    count++;
+  }
+
+  return currNode;
+}
+
 Terminal = {
   cmdCount: 0,
   name: "patrick@veith:~$ ",
   newLine: "\npatrick@veith:~$ ",
   termId: "term-input",
+  histList: null,
   initialize: function () {
     //Displays the first prompt
     terminalElement = document.getElementById(Terminal.termId);
@@ -16,6 +65,8 @@ Terminal = {
         Terminal.Input.readInput(e);
       }
     });
+
+    histList = HistoryList();
   },
   Input: {
     enterCode: 13,
@@ -35,7 +86,8 @@ Terminal = {
       //TODO terminal history
       if (event.keyCode == Terminal.Input.enterCode) {
         //Determines command and returns after executing
-        var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
+        var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value
+        //Terminal.histList.add(cmd);
         if(cmd == Terminal.Commands.clear){
           terminalElement.value = terminalElement.value + Terminal.name;
         }else{
