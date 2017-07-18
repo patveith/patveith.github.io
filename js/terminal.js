@@ -94,12 +94,22 @@ Terminal = {
       }
     },
     getPreviousInputUp: function(){
-      $("h1").text(Terminal.histList.getPrev());
-      var terminalElement = Terminal.Input.getTextArea();
-      terminalElement.value = terminalElement.value +  "\nbash: " + cmd + ": command not found";
+      var prev = Terminal.histList.getPrev();
+      $("h1").text(prev);
+      terminalElement = Terminal.Input.getTextArea();
+      var arr = Terminal.Input.getTextArea().value.split(Terminal.newLine);
+      arr[Terminal.cmdCount] = prev;
+      terminalElement.value = arr.join("\npatrick@veith:~$ ");
+      //terminalElement.value = terminalElement.value +  Terminal.histList.getPrev();
     },
     getPreviousInputDown: function(){
-      $("h1").text(Terminal.histList.getNext());
+      var next = Terminal.histList.getNext();
+      $("h1").text(next);
+      terminalElement = Terminal.Input.getTextArea();
+      var arr = Terminal.Input.getTextArea().value.split(Terminal.newLine);
+      arr[Terminal.cmdCount] = next;
+      terminalElement.value = arr.join("\npatrick@veith:~$ ");
+      //terminalElement.value = terminalElement.value +  Terminal.histList.getPrev();
     },
     readInput: function(event){
       //TODO terminal history
