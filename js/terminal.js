@@ -6,11 +6,13 @@ Terminal = {
   newLine: "\npatrick@veith:~$ ",
   termId: "term-input",
   initialize: function () {
+    //Displays the first prompt
     terminalElement = document.getElementById(Terminal.termId);
     terminalElement.value = Terminal.name;
-    //Sends backspace to readInput function
+
+    //Sends backspace, uparrow, and downarrow to readInput function
     $("textarea").on('keydown', function (e) {
-      if (e.keyCode == 8) {
+      if (e.keyCode == 8 || e.keyCode == 40 || e.keyCode ==38) {
         Terminal.Input.readInput(e);
       }
     });
@@ -18,10 +20,12 @@ Terminal = {
   Input: {
     enterCode: 13,
     backspaceCode: 8,
+    downArrow: 40,
+    upArrow: 38,
     getTextArea: function(){
       return document.getElementById(Terminal.termId);
     },
-    checkIfPrompt: function(event){
+    deleteUnlessPrompt: function(event){
       var arr = Terminal.Input.getTextArea().value.split(Terminal.name);
       if(arr[arr.length-1] == ""){
         event.preventDefault();
@@ -30,6 +34,7 @@ Terminal = {
     readInput: function(event){
       //TODO terminal history
       if (event.keyCode == Terminal.Input.enterCode) {
+        //Determines command and returns after executing
         var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
         if(cmd == Terminal.Commands.clear){
           terminalElement.value = terminalElement.value + Terminal.name;
@@ -39,10 +44,16 @@ Terminal = {
         }
         //Prevents line break from occuring
         event.preventDefault();
-        //Scrolls down as commands are entered
+        //Scrolls textarea down as commands are entered
         terminalElement.scrollTop = terminalElement.scrollHeight;
       }else if(event.keyCode == Terminal.Input.backspaceCode){
-        Terminal.Input.checkIfPrompt(event);
+        Terminal.Input.deleteUnlessPrompt(event);
+      }else if(event.keyCode == Terminal.Input.upArrow){
+        //Stops cursor from moving up
+        event.preventDefault();
+      }else if(event.keyCode == Terminal.Input.downArrow){
+        //Stops cursor from moving down
+        event.preventDefault();
       }
     },
     interpretInput: function(text){
