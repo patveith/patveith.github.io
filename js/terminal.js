@@ -78,7 +78,10 @@ Terminal = {
 
     //Sends backspace, uparrow, and downarrow to readInput function
     $("textarea").on('keydown', function (e) {
-      if (e.keyCode == 8 || e.keyCode == 40 || e.keyCode ==38) {
+      if (e.keyCode == 8 ||
+          e.keyCode == 40 ||
+          e.keyCode == 38 ||
+          e.keyCode == 37) {
         Terminal.Input.readInput(e);
       }
     });
@@ -88,19 +91,20 @@ Terminal = {
     backspaceCode: 8,
     downArrow: 40,
     upArrow: 38,
+    leftArrow: 37,
     //TODO Get rid of historyPosition using getPrev and getNext
     historyPosition: 0,
     getTextArea: function(){
       return document.getElementById(Terminal.termId);
     },
-    deleteUnlessPrompt: function(event){
+    moveUnlessPrompt: function(event){
       var arr = Terminal.Input.getTextArea().value.split(Terminal.name);
       if(arr[arr.length-1] == ""){
         event.preventDefault();
       }
     },
     getPreviousInputUp: function(){
-      $("h2").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
+      $("h1").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
       Terminal.Input.historyPosition--;
       //Bottom of list
       if(Terminal.Input.historyPosition == Terminal.histList.length){
@@ -114,7 +118,7 @@ Terminal = {
       }
     },
     getPreviousInputDown: function(){
-      $("h2").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
+      $("h1").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
       Terminal.Input.historyPosition++;
       //Bottom of list
       if(Terminal.Input.historyPosition == Terminal.histList.length){
@@ -146,8 +150,9 @@ Terminal = {
         event.preventDefault();
         //Scrolls textarea down as commands are entered
         terminalElement.scrollTop = terminalElement.scrollHeight;
-      }else if(event.keyCode == Terminal.Input.backspaceCode){
-        Terminal.Input.deleteUnlessPrompt(event);
+      }else if(event.keyCode == Terminal.Input.backspaceCode ||
+        event.keyCode == Terminal.Input.leftArrow){
+        Terminal.Input.moveUnlessPrompt(event);
       }else if(event.keyCode == Terminal.Input.upArrow){
         //Stops cursor from moving up
         event.preventDefault();
