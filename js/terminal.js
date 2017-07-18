@@ -10,50 +10,67 @@ function HistoryList(){
   this.length = 0;
   this.head = null;
   this.tail = null;
+  this.curr = null;
 };
 
-HistoryList.prototype.add = function(value) {
-  var node = Node(value);
+HistoryList.prototype = {
+  add: function(value){
+    //Don't store empty commands
+    if(value == ""){
+      return null;
+    }
+    var node = new Node(value);
 
-  //If not the first node, append new node, add previous to new node, change tail node
-  if(this.length > 0){
-    this.tail.next = node;
-    node.prev = this.tail;
-    this.tail = node;
-  //If the first node set beginning and end of list to the new node
-  }else{
-    this.head = node;
-    this.tail = node;
+    if(this.length){
+      this.tail.next = node;
+      node.prev = this.tail;
+      this.tail = node;
+      this.curr = node;
+    }else{
+      this.head = node;
+      this.tail = node;
+      this.curr = node;
+    }
+
+    this.length++;
+
+    return node;
+  },
+  searchNodeAt: function(position){
+    var currNode = this.head,
+    length = this.length,
+    count = 1,
+    message = {failure: "Failure"};
+
+    if(length === 0 || position < 1 || position > length){
+      throw new Error(message.failure);
+    }
+
+    while(count < position){
+      currNode = currNode.next;
+      count++;
+    }
+
+    return currNode;
+  },
+  getPrev: function(){
+    this.curr = this.curr.prev;
+  },
+  getNext: function(){
+    if(this.curr.next == null){
+      return this.curr.value;
+    }else {
+      this.curr = this.curr.next;
+    }
   }
-
-  this.length++;
-  return node;
 };
-
-HistoryList.prototype.searchNodeAt = function(position) {
-  var currNode = this.head,
-  length = this.length,
-  count = 1,
-  message = {failure: "Error: Node not in list"};
-
-  if(length === 0 || position < 1 || position > length){
-    throw new Error(message.failure);
-  }
-
-  while(count < position){
-    currNode = currNode.next;
-    count++;
-  }
-
-  return currNode;
-}
 
 Terminal = {
   cmdCount: 0,
   name: "patrick@veith:~$ ",
   newLine: "\npatrick@veith:~$ ",
   termId: "term-input",
-  histList: null,
+  histList: new HistoryList(),
   initialize: function () {
     //Displays the first prompt
     terminalElement = document.getElementById(Terminal.termId);
@@ -65,14 +82,14 @@ Terminal = {
         Terminal.Input.readInput(e);
       }
     });
-
-    histList = HistoryList();
   },
   Input: {
     enterCode: 13,
     backspaceCode: 8,
     downArrow: 40,
     upArrow: 38,
+    //TODO Get rid of historyPosition using getPrev and getNext
+    historyPosition: 0,
     getTextArea: function(){
       return document.getElementById(Terminal.termId);
     },
@@ -82,12 +99,43 @@ Terminal = {
         event.preventDefault();
       }
     },
+    getPreviousInputUp: function(){
+      $("h2").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
+      Terminal.Input.historyPosition--;
+      //Bottom of list
+      if(Terminal.Input.historyPosition == Terminal.histList.length){
+
+      //Top of list
+      }else if(Terminal.Input.historyPosition == 1){
+
+      //Middle of list
+      }else{
+
+      }
+    },
+    getPreviousInputDown: function(){
+      $("h2").text(Terminal.histList.searchNodeAt(Terminal.Input.historyPosition).value);
+      Terminal.Input.historyPosition++;
+      //Bottom of list
+      if(Terminal.Input.historyPosition == Terminal.histList.length){
+
+      //Top of list
+      }else if(Terminal.Input.historyPosition == 1){
+
+      //Middle of list
+      }else{
+
+      }
+    },
     readInput: function(event){
       //TODO terminal history
       if (event.keyCode == Terminal.Input.enterCode) {
         //Determines command and returns after executing
-        var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value
-        //Terminal.histList.add(cmd);
+        var cmd = Terminal.Input.interpretInput(Terminal.Input.getTextArea().value);
+        //Adds command to history and resets counter to end of the list
+        Terminal.histList.add(cmd);
+        Terminal.Input.historyPosition = Terminal.histList.length;
+        //Adds prompt to terminal
         if(cmd == Terminal.Commands.clear){
           terminalElement.value = terminalElement.value + Terminal.name;
         }else{
@@ -103,9 +151,11 @@ Terminal = {
       }else if(event.keyCode == Terminal.Input.upArrow){
         //Stops cursor from moving up
         event.preventDefault();
+        Terminal.Input.getPreviousInputUp();
       }else if(event.keyCode == Terminal.Input.downArrow){
         //Stops cursor from moving down
         event.preventDefault();
+        Terminal.Input.getPreviousInputDown();
       }
     },
     interpretInput: function(text){
