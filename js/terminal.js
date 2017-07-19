@@ -67,9 +67,10 @@ Terminal = {
   termId: "term-input",
   histList: new HistoryList(),
   initialize: function () {
-    //Displays the first prompt
+    //Displays the first prompt and brings into focus
     terminalElement = document.getElementById(Terminal.termId);
     terminalElement.value = Terminal.name;
+    terminalElement.focus();
 
     //Sends backspace, uparrow, and downarrow to readInput function
     $("textarea").on('keydown', function (e) {
