@@ -1,0 +1,35 @@
+@media (min-width: 992px) {
+  #navbarLeft {
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    background-image: black;
+  }
+}
+.navbar.navbar-collapse li a {
+    color: white;
+}
+
+.navbar{
+  background-color: black;
+}
+.navbar-brand{
+  color: white;
+  margin-bottom: 10px;
+
+}
+
+h2 {
+  font-family: verdana;
+  font-size: 300%;
+  margin-left: 20px;
+}
+
+#contact, #resume, #education, #photos, #projects {
+  display: none;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
