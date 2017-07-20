@@ -14,3 +14,15 @@
     border: 1px solid #888;
     width: 60%;
 }
+
+.btn {
+  position: relative;
+  left: 85%;
+}
+
+@media (min-width: 992px) {
+  .btn {
+    position: relative;
+    left: 93%;
+  }
+}
