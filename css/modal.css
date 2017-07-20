@@ -3,7 +3,7 @@
 }
 
 /*Small screens*/
-@media (max-width: 992px) {
+@media (min-width: 320px) {
   .modal-dialog {
     top: 3%;
     width: 100%;
@@ -15,7 +15,7 @@
 }
 
 /*Large screens*/
-@media (min-width: 992px) {
+@media (min-width: 1025px) {
   .modal.fade:not(.in).left .modal-dialog {
   	-webkit-transform: translate3d(-25%, 0, 0);
   	transform: translate3d(-25%, 0, 0);
