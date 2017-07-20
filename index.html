@@ -43,15 +43,40 @@
       <textarea id="term-input" spellcheck="false" onkeypress="Terminal.Input.readInput(event)"></textarea>
     </div>
   </div>
-  <div class="modal-content" id="projects">
-    <span class="close">&times;</span>
-    <p>This is a project</p>
-  </div>
-  <div class="row" id="photos">These are pictures</div>
-  <div class="row" id="education">I went to this school</div>
-  <div class="row" id="resume">This is my resume</div>
-  <div class="modal-content" id="contact">
-    <span class="close">&times;</span>
-    <p>This is my contact info</p>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="modal" id="projects">
+      <div class="modal-content">
+        <p>These are my projects</p>
+      </div>
+    </div>
+    <div class="modal" id="contact">
+      <div class="modal-content">
+        <p>This is my contact info</p>
+        <button type="button" class="btn btn-outline-info" onclick="Terminal.Commands.contactScript()">Close</button>
+      </div>
+    </div>
+    <div class="modal" id="photos">
+      <div class="modal-content">
+        <p>
+          These are pictures
+        </p>
+      </div>
+    </div>
+    <div class="modal" id="education">
+      <div class="modal-content">
+        <p>
+          I went to this school
+        </p>
+      </div>
+    </div>
+    <div class="modal" id="resume">
+      <div class="modal-content">
+        <p>
+          This is my resume
+        </p>
+      </div>
+    </div>
   </div>
 </body>
