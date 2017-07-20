@@ -1,6 +1,6 @@
 @media (min-width: 992px) {
   #navbarLeft {
-    width: 100px;
+    width: 120px;
     height: 100%;
     position: fixed;
     background-image: black;
@@ -16,7 +16,6 @@
 .navbar-brand{
   color: white;
   margin-bottom: 10px;
-
 }
 
 h2 {
