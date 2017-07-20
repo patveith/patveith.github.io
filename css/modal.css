@@ -1,27 +1,34 @@
-.modal-content {
-    margin: 25% auto;
-    padding: 20px;
-    width: 100%;
-    bottom: 95%;
+.modal{
+  overflow: hidden !important;
 }
 
+/*Small screens*/
+@media (max-width: 992px) {
+  .modal-dialog {
+    top: 3%;
+    width: 100%;
+    height: 50%;
+  }
+  .modal-content{
+    height: 100%;
+  }
+}
+
+/*Large screens*/
 @media (min-width: 992px) {
   .modal.fade:not(.in).left .modal-dialog {
   	-webkit-transform: translate3d(-25%, 0, 0);
   	transform: translate3d(-25%, 0, 0);
   }
-  .modal-content {
-      margin: 25% auto;
-      padding: 20px;
-      width: 100%;
-      top: 5%;
-      right: 90%;
-      z-index: 1;
+  .modal-dialog {
+      margin: 0px;
+      padding: 0px;
+      width: 43%;
+      left: 7%;
+      top: 10%;
+      height: 100%;
   }
-  .modal-backdrop{
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+  .modal-content{
+    height: 90%;
   }
 }

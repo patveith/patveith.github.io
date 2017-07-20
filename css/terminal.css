@@ -4,13 +4,14 @@ textarea {
   font-family: 'Ubuntu Mono', monospace;
   font-size: 16px;
   height: 494px;
-  width: 800px;
+  width: 100%;
   resize: none;
   border-radius: 6px;
   columns: 80;
   outline: none;
   line-height: normal;
-  margin-top: 10px;
+  margin-top: 8%;
+  margin-right: 3%;
 }
 
 ::-webkit-scrollbar {
