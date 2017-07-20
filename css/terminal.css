@@ -1,19 +1,40 @@
-textarea {
-  background: black;
-  color: white;
-  font-family: 'Ubuntu Mono', monospace;
-  font-size: 16px;
-  height: 494px;
-  width: 100%;
-  resize: none;
-  border-radius: 6px;
-  columns: 80;
-  outline: none;
-  line-height: normal;
-  margin-top: 8%;
-  margin-right: 3%;
+/*Small screens*/
+@media (max-width: 992px) {
+  textarea {
+    background: black;
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 16px;
+    height: 380px;
+    width: 100%;
+    resize: none;
+    border-radius: 6px;
+    columns: 80;
+    outline: none;
+    line-height: normal;
+    margin-top: 45%;
+    margin-right: 3%;
+  }
 }
 
+/*Large screens*/
+@media (min-width: 992px) {
+  textarea {
+    background: black;
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 16px;
+    height: 494px;
+    width: 100%;
+    resize: none;
+    border-radius: 6px;
+    columns: 80;
+    outline: none;
+    line-height: normal;
+    margin-top: 8%;
+    margin-left: 10%
+  }
+}
 ::-webkit-scrollbar {
   width: 3px;
 }
