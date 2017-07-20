@@ -184,6 +184,9 @@ Terminal = {
         case Terminal.Commands.contact:
           Terminal.Commands.contactScript();
           break;
+        case Terminal.Commands.resume:
+          Terminal.Commands.resumeScript();
+          break;
         case Terminal.Commands.clear:
           Terminal.Commands.clearCommand();
           break;
@@ -200,7 +203,8 @@ Terminal = {
     clear: "clear",
     education: "./education.sh",
     contact: "./contact.sh",
-    list: ["contact.sh\t", "projects\n", "education.sh\t", "resume.pdf\n", "photos"],
+    resume: "./resume.sh",
+    list: ["contact.sh\t", "projects\n", "education.sh\t", "resume.sh\n", "photos"],
     helpCommand: function(){
       //TODO lots of things related to help
     },
@@ -229,6 +233,9 @@ Terminal = {
     },
     contactScript: function(){
       $("#contact").modal();
+    },
+    resumeScript: function(){
+      $("#resume").modal();
     }
   }
 };
