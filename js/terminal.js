@@ -71,7 +71,8 @@ Terminal = {
     terminalElement = document.getElementById(Terminal.termId);
     terminalElement.value = Terminal.name;
     terminalElement.focus();
-
+    //Slides modals in from the left
+    $('.modal').prop('class', 'modal fade').addClass("left");
     //Sends backspace, uparrow, and downarrow to readInput function
     $("textarea").on("keydown", function (e) {
       if (e.keyCode == 8 ||
