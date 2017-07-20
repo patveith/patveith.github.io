@@ -52,10 +52,20 @@
         <p>These are my projects</p>
       </div>
     </div>
-    <div class="modal" id="contact">
-      <div class="modal-content">
-        <p>This is my contact info</p>
-        <button type="button" class="btn btn-outline-info" onclick="Terminal.Commands.contactScript()">Close</button>
+    <div class="modal fade" role="dialog" id="contact">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>This is my contact info</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal" id="photos">
@@ -65,12 +75,20 @@
         </p>
       </div>
     </div>
-    <div class="modal" id="education">
-      <div class="modal-content">
-        <p>
-          I went to this school
-        </p>
-        <button type="button" class="btn btn-outline-info" onclick="Terminal.Commands.educationScript()">Close</button>
+    <div class="modal fade" role="dialog" id="education">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">The Ohio State University</h4>
+          </div>
+          <div class="modal-body">
+            <p>This is where I went to school</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal" id="resume">

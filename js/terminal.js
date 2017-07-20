@@ -73,7 +73,7 @@ Terminal = {
     terminalElement.focus();
 
     //Sends backspace, uparrow, and downarrow to readInput function
-    $("textarea").on('keydown', function (e) {
+    $("textarea").on("keydown", function (e) {
       if (e.keyCode == 8 ||
           e.keyCode == 40 ||
           e.keyCode == 38 ||
@@ -225,14 +225,10 @@ Terminal = {
       terminalElement.value = terminalElement.value +  "\nbash: " + cmd + ": command not found";
     },
     educationScript: function(){
-      //TODO make disappear when another thing appears
-      $("#education").toggle();
-      //$("#education").show();
+      $("#education").modal();
     },
     contactScript: function(){
-      //TODO make disappear when another thing appears
-      $("#contact").toggle();
-      //$("#contact").show();
+      $("#contact").modal();
     }
   }
 };
