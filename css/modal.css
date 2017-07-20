@@ -5,7 +5,7 @@
 /*Small screens*/
 @media (min-width: 320px) {
   .modal-dialog {
-    top: 3%;
+    top: 12%;
     width: 100%;
     height: 28%;
   }

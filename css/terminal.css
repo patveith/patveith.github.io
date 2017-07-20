@@ -4,15 +4,15 @@
     background: black;
     color: white;
     font-family: 'Ubuntu Mono', monospace;
-    font-size: 16px;
-    height: 380px;
+    font-size: 22px;
+    height: 300px;
     width: 100%;
     resize: none;
     border-radius: 6px;
     columns: 80;
     outline: none;
     line-height: normal;
-    margin-top: 45%;
+    margin-top: 40%;
     margin-right: 3%;
   }
 }

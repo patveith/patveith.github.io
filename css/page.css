@@ -1,3 +1,17 @@
+@media screen (min-width: 320px) {
+  #navbarLeft {
+    display: none;
+  }
+  #navbarTop{
+    background-image: black;
+  }
+  h2 {
+    font-family: verdana;
+    font-size: 200%;
+    margin-left: 20px;
+  }
+}
+
 @media (min-width: 1025px) {
   #navbarLeft {
     width: 7%;
@@ -5,7 +19,16 @@
     position: fixed;
     background-image: black;
   }
+  #navbarTop{
+    display: none;
+  }
+  h2 {
+    font-family: verdana;
+    font-size: 300%;
+    margin-left: 20px;
+  }
 }
+
 .navbar.navbar-collapse li a {
     color: white;
 }
@@ -16,12 +39,6 @@
 .navbar-brand{
   color: white;
   margin-bottom: 10px;
-}
-
-h2 {
-  font-family: verdana;
-  font-size: 300%;
-  margin-left: 20px;
 }
 
 html, body {
