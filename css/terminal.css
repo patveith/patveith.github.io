@@ -21,3 +21,18 @@ textarea {
   height: 10px;
   background-color: #F07746;
 }
+
+::selection {
+  background:#D3D3D3	;
+  color:#000000;
+}
+
+::-moz-selection {
+  background:#D3D3D3;
+  color:#000000;
+}
+
+::-webkit-selection {
+  background:#D3D3D3;
+  color:#000000;
+}
