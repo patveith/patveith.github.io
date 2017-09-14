@@ -18,6 +18,7 @@
 
   <!--Console font-->
   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
   <link rel="icon" href="img/initials.ico">
 
   <!--Console javascript-->
@@ -27,116 +28,230 @@
 </head>
 
 <body id="page-top" onload="Terminal.initialize()">
-  <div class="row">
-    <div class="col-md-1">
-      <div class="navbar navbar-collapse" id="navbarLeft">
-        <a class="navbar-brand" href="#">Patrick Veith</a>
-        <ul class="nav navbar-nav">
-         <li><a href="#projects">Projects</a></li>
-         <li><a href="#about">About</a></li>
-         <li><a href="#resume">Resume</a></li>
-         <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <nav class="navbar navbar-fixed-top navbar-collapse" id="navbarTop">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Patrick Veith</a>
-          </div>
-          <ul class="nav navbar-collapse">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#resume">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-    <div class="col-md-5">
-      <h2>Check out more about me!</h2>
-      <div class="modal fade" role="dialog" id="contact">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Contact Me</h4>
-            </div>
-            <div class="modal-body">
-              <p>This is my contact info</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" role="dialog" id="education">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">The Ohio State University</h4>
-            </div>
-            <div class="modal-body">
-              <p>This is where I went to school</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" role="dialog" id="photo">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Contact Me</h4>
-            </div>
-            <div class="modal-body">
-              <p>This is my contact info</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" role="dialog" id="projects">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Contact Me</h4>
-            </div>
-            <div class="modal-body">
-              <p>This is my contact info</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" role="dialog" id="resume">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Resume</h4>
-            </div>
-            <div class="modal-body">
-              <p>This is my resume</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
+  <div id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h1>PATRICK VEITH</h1>
         </div>
       </div>
     </div>
-    <div class="col-md-5">
-      <textarea id="term-input" spellcheck="false" onkeypress="Terminal.Input.readInput(event)"></textarea>
+  </div>
+
+  <section id="about" name="about"></section>
+	<div id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 name">
+					<img class="img-responsive" src="img/me.JPG" >
+					<h1>Patrick Veith</h1>
+				</div>
+				<div class="col-lg-8">
+					<h2>Software Engineer <br/>Rock Climber <br/>Getting outside in the Southeast</h2>
+
+					<div class="col-md-6">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+						<p> Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="sep about" data-stellar-background-ratio="0.5"></div>
+
+
+  <section id="project" name="project"></section>
+  <div id="project">
+    <div class="container">
+      <div class="row">
+        <h1>Some of my projects</h1>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port04.jpg"><img class="img-responsive" src="assets/img/project/port04.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port05.jpg"><img class="img-responsive" src="assets/img/project/port05.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port06.jpg"><img class="img-responsive" src="assets/img/project/port06.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+      </div><!-- /row -->
+
+      <div class="row mt">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port01.jpg"><img class="img-responsive" src="assets/img/project/port01.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port02.jpg"><img class="img-responsive" src="assets/img/project/port02.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+          <div class="project-wrapper">
+                      <div class="project">
+                          <div class="photo-wrapper">
+                              <div class="photo">
+                                <a class="fancybox" href="assets/img/project/port03.jpg"><img class="img-responsive" src="assets/img/project/port03.jpg" alt=""></a>
+                              </div>
+                              <div class="overlay"></div>
+                          </div>
+                      </div>
+                  </div>
+        </div><!-- col-lg-4 -->
+      </div><!-- /row -->
+    </div><! --/container -->
+    <div class="container">
+      <div class="row mt centered">
+        <h1>MY DESIGN PROCESS</h1>
+        <div class="col-lg-4 proc">
+          <i class="fa fa-coffee"></i>
+          <h3>The Meeting</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        </div>
+        <div class="col-lg-4 proc">
+          <i class="fa fa-cogs"></i>
+          <h3>The Ideas</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        </div>
+        <div class="col-lg-4 proc">
+          <i class="fa fa-heart"></i>
+          <h3>The Product</h3>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+        </div>
+
+      </div><! --/row -->
+    </div><! --/container -->
+  </div><! --/project -->
+
+  <div class="modal fade" role="dialog" id="contact">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Me</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is my contact info</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" role="dialog" id="education">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">The Ohio State University</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is where I went to school</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" role="dialog" id="photo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Me</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is my contact info</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" role="dialog" id="projects">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Contact Me</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is my contact info</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" role="dialog" id="resume">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Resume</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is my resume</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 </body>

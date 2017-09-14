@@ -1,47 +1,75 @@
-@media screen (min-width: 320px) {
-  #navbarLeft {
-    display: none;
-  }
-  #navbarTop{
-    background-image: black;
-  }
-  h2 {
-    font-family: verdana;
-    font-size: 200%;
-    margin-left: 20px;
-  }
-}
-
-@media (min-width: 1025px) {
-  #navbarLeft {
-    width: 7%;
-    height: 100%;
-    position: fixed;
-    background-image: black;
-  }
-  #navbarTop{
-    display: none;
-  }
-  h2 {
-    font-family: verdana;
-    font-size: 300%;
-    margin-left: 20px;
-  }
-}
-
-.navbar.navbar-collapse li a {
-    color: white;
-}
-
-.navbar{
-  background-color: black;
-}
-.navbar-brand{
-  color: white;
-  margin-bottom: 10px;
-}
-
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'Oswald', sans-serif;
+}
+p{
+
+}
+
+#header {
+	background: url(../img/the_voo.jpg) no-repeat center top;
+	margin-top: 0px;
+	padding-top:120px;
+	text-align:center;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 700px;
+	width: 100%;
+
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#header h1 {
+	color:#ffffff;
+	margin-top: 10%;
+	letter-spacing: 12px;
+	font-size: 75px;
+	font-weight: bold;
+  font-family: 'Questrial', sans-serif;
+	text-shadow: 2px 2px 2px #000;
+}
+
+#about {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.name {
+	text-align: center;
+}
+.name p {
+	font-size: 22px;
+	font-weight: lighter;
+	margin-top: 15px;
+	letter-spacing: 2px;
+}
+
+.sep {
+	background-attachment: fixed;
+	background-position: 75% 0;
+	background-repeat: no-repeat;
+	height: 450px;
+	position: relative;
+}
+.about {
+	background-image: url(../img/tetons.JPG);
+}
+
+img {
+  height: 80%;
+  width: 80%;
+  border-radius: 6px;
+}
+.img-responsive {
+    display: block;
+    margin: 0 auto;
 }
