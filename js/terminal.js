@@ -172,10 +172,6 @@ Terminal = {
           Terminal.Commands.helpCommand();
           alert(cmd);
           break;
-        case Terminal.Commands.cd:
-          Terminal.Commands.changeDirectoryCommand();
-          alert(cmd);
-          break;
         case Terminal.Commands.ls:
           Terminal.Commands.listCommand();
           break;
@@ -188,6 +184,10 @@ Terminal = {
         case Terminal.Commands.resume:
           Terminal.Commands.resumeScript();
           break;
+        case Terminal.Commands.projects:
+          Terminal.Commands.projectScript();
+        case Terminal.Commands.photos:
+          Terminal.Commands.photoScript();
         case Terminal.Commands.clear:
           Terminal.Commands.clearCommand();
           break;
@@ -199,21 +199,18 @@ Terminal = {
   },
   Commands: {
     help: "help",
-    cd: "cd",
     ls: "ls",
     clear: "clear",
     education: "./education.sh",
     contact: "./contact.sh",
     resume: "./resume.sh",
-    list: ["contact.sh\t", "projects\n", "education.sh\t", "resume.sh\n", "photos"],
+    projects: "./projects.sh",
+    photos: "./photos.sh",
+    list: ["contact.sh\t", "projects.sh\n", "education.sh\t", "resume.sh\n", "photos.sh"],
     helpCommand: function(){
       //TODO lots of things related to help
     },
-    changeDirectoryCommand: function(){
-        //TODO changes ls command list
-    },
     listCommand: function(){
-      //TODO make words have highlighting, green for files, blue for directories
       var terminalElement = Terminal.Input.getTextArea();
       terminalElement.value = terminalElement.value + "\n" + Terminal.Commands.list.join("");
     },
@@ -237,6 +234,12 @@ Terminal = {
     },
     resumeScript: function(){
       $("#resume").modal();
+    },
+    projectScript: function(){
+      $("#projects").modal();
+    },
+    photoScript: function(){
+      $("#photos").modal();
     }
   }
 };
