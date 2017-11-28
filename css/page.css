@@ -73,3 +73,12 @@ img {
     display: block;
     margin: 0 auto;
 }
+
+#contact{
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.fa-linkedin{
+  padding-left: 20px;
+}
